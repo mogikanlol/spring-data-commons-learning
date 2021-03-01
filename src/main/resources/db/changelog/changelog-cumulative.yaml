@@ -1,0 +1,61 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: me
+      changes:
+        - createTable:
+            tableName: person
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: firstname
+                  type: varchar(50)
+              - column:
+                  name: lastname
+                  type: varchar(50)
+  - changeSet:
+      id: 2
+      author: me
+      changes:
+        - createTable:
+            tableName: json_populated_entity
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: firstname
+                  type: varchar(50)
+              - column:
+                  name: lastname
+                  type: varchar(50)
+  - changeSet:
+      id: 3
+      author: me
+      changes:
+        - createTable:
+            tableName: xml_populated_entity
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: firstname
+                  type: varchar(50)
+              - column:
+                  name: lastname
+                  type: varchar(50)
