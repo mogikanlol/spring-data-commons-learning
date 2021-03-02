@@ -59,3 +59,23 @@ databaseChangeLog:
               - column:
                   name: lastname
                   type: varchar(50)
+  - changeSet:
+      id: 4
+      author: me
+      changes:
+        - createTable:
+            tableName: customer
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(50)
+              - column:
+                  name: created_date
+                  type: timestamp

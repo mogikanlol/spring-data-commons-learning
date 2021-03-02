@@ -11,18 +11,15 @@ import com.example.app.domain.populated.XmlPopulatedEntity;
 import com.example.app.repository.PersonRepository;
 import com.example.app.repository.populated.JsonPopulatedEntityRepository;
 import com.example.app.repository.populated.XmlPopulatedEntityRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.support.TransactionTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class SimpleIntTests extends AbstractIntTest {
+public class BasicFunctionalityIntTest extends AbstractIntTest {
 
     @Autowired
     JsonPopulatedEntityRepository jsonPopulatedEntityRepository;
@@ -33,17 +30,8 @@ public class SimpleIntTests extends AbstractIntTest {
     @Autowired
     PersonRepository personRepository;
 
-    @Autowired
-    PlatformTransactionManager platformTransactionManager;
-
-    TransactionTemplate transactionTemplate;
-
-    @BeforeEach
-    void setUp() {
-        transactionTemplate = new TransactionTemplate(platformTransactionManager);
-    }
     @Test
-    void test_json_population() {
+    void testJsonPopulation() {
         Optional<JsonPopulatedEntity> entityOptional = jsonPopulatedEntityRepository.findById(1L);
 
         assertTrue(entityOptional.isPresent());
@@ -57,7 +45,7 @@ public class SimpleIntTests extends AbstractIntTest {
     }
 
     @Test
-    void test_xml_population() {
+    void testXmlPopulation() {
         Optional<XmlPopulatedEntity> entityOptional = xmlPopulatedEntityRepository.findById(1L);
 
         assertTrue(entityOptional.isPresent());
@@ -72,7 +60,7 @@ public class SimpleIntTests extends AbstractIntTest {
 
     @Test
     @Sql(scripts = "classpath:sql/delete-by-lastname.sql")
-    void test_delete_by_lastname() {
+    void shouldDeleteByLastname() {
         {
             List<Person> personList = transactionTemplate.execute(status -> toList(personRepository.findAll()));
             assertNotNull(personList);
@@ -87,7 +75,6 @@ public class SimpleIntTests extends AbstractIntTest {
             assertEquals(0, personList.size());
         }
     }
-
 
     private <T> List<T> toList(Iterable<T> iterable) {
         List<T> list = new ArrayList<>();
