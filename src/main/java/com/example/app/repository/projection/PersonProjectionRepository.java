@@ -1,15 +1,13 @@
-package com.example.app.repository;
+package com.example.app.repository.projection;
 
 import com.example.app.domain.Person;
 import com.example.app.projection.ClassBased;
 import com.example.app.projection.InterfaceBasedClosed;
 import com.example.app.projection.InterfaceBasedClosedNullWrapper;
 import com.example.app.projection.InterfaceBasedOpened;
-import org.springframework.data.repository.CrudRepository;
+import com.example.app.repository.base.MyBaseRepository;
 
-import java.util.List;
-
-public interface PersonProjectionRepository extends CrudRepository<Person, Long>{
+public interface PersonProjectionRepository extends MyBaseRepository<Person, Long> {
 
     InterfaceBasedClosed readById(Long id);
 

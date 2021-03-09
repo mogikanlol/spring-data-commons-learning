@@ -8,7 +8,7 @@ import com.example.app.projection.ClassBased;
 import com.example.app.projection.InterfaceBasedClosed;
 import com.example.app.projection.InterfaceBasedClosedNullWrapper;
 import com.example.app.projection.InterfaceBasedOpened;
-import com.example.app.repository.PersonProjectionRepository;
+import com.example.app.repository.projection.PersonProjectionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.jdbc.Sql;

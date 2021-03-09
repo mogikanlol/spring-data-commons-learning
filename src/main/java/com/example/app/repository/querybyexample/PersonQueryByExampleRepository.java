@@ -1,10 +1,10 @@
-package com.example.app.repository;
+package com.example.app.repository.querybyexample;
 
 import com.example.app.domain.Person;
-import org.springframework.data.repository.CrudRepository;
+import com.example.app.repository.base.MyBaseRepository;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 
 public interface PersonQueryByExampleRepository extends
-        CrudRepository<Person, Long>,
+        MyBaseRepository<Person, Long>,
         QueryByExampleExecutor<Person> {
 }

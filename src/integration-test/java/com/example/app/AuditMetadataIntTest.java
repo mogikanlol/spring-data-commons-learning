@@ -29,7 +29,8 @@ public class AuditMetadataIntTest extends AbstractIntTest {
         SecurityContext context = SecurityContextHolder.getContext();
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                 "test",
-                "test123", List.of(new SimpleGrantedAuthority("ADMIN"))
+                "test123",
+                List.of(new SimpleGrantedAuthority("ADMIN"))
         );
 
         context.setAuthentication(authentication);

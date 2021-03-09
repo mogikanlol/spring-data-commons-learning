@@ -1,4 +1,4 @@
-package com.example.app.configuration;
+package com.example.app.configuration.populator;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

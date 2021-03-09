@@ -1,4 +1,4 @@
-package com.example.app.configuration;
+package com.example.app.configuration.populator;
 
 import com.example.app.domain.populated.XmlPopulatedEntity;
 import org.springframework.context.annotation.Bean;

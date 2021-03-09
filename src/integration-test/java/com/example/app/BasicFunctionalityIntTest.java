@@ -76,6 +76,39 @@ public class BasicFunctionalityIntTest extends AbstractIntTest {
         }
     }
 
+    @Test
+    @Sql(scripts = "classpath:sql/custom-query-data.sql")
+    void shouldExecuteCustomQuery() {
+        Optional<Person> personOptional = personRepository.findByFirstnameAndLastname("Ted", "Brown");
+
+        assertTrue(personOptional.isPresent());
+
+        Person entity = personOptional.get();
+
+        assertAll(
+                () -> assertEquals("Ted", entity.getFirstname()),
+                () -> assertEquals("Brown", entity.getLastname())
+        );
+    }
+
+    @Test
+    @Sql(scripts = "classpath:sql/custom-query-data.sql")
+    void shouldExecuteCustomQueryAsynchronously() {
+        personRepository.findByFirstnameAndLastnameAsync("Ted", "Brown")
+                .thenAccept(personOptional -> {
+                    assertTrue(personOptional.isPresent());
+
+                    Person entity = personOptional.get();
+
+                    System.out.println(entity);
+
+                    assertAll(
+                            () -> assertEquals("Ted", entity.getFirstname()),
+                            () -> assertEquals("Brown", entity.getLastname())
+                    );
+                });
+    }
+
     private <T> List<T> toList(Iterable<T> iterable) {
         List<T> list = new ArrayList<>();
 

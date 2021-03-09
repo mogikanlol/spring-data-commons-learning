@@ -1,7 +1,10 @@
 package com.example.app.repository;
 
 import com.example.app.domain.Customer;
-import org.springframework.data.repository.CrudRepository;
+import com.example.app.repository.base.MyBaseRepository;
 
-public interface CustomerRepository extends CrudRepository<Customer, Long> {
+public interface CustomerRepository extends MyBaseRepository<Customer, Long> {
+
+
+
 }
